@@ -5,7 +5,7 @@ $f3 = \Base::instance();
 // Config
 $f3->set('CACHE', true);
 $f3->set('DEBUG', 3);
-$f3->set('TITLE_APP','BASE');
+$f3->set('TITLE_APP','IN/OUT');
 $f3->set('DB_APP', 'sqlite:db/db.sqlite');
 
 // Home
@@ -16,7 +16,7 @@ $f3->route('GET @todo_delete: /todo/delete/@id', '\App\Todo->Delete');
 $f3->route('POST @todo_add: /todo/add', '\App\Todo->Add');
 
 // Spese
-
+$f3->route('GET @nuovo_2: /nuovo/@num', '\App\Movimento->Nuovo_2');
 
 // Auth
 

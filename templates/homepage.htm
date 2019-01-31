@@ -1,35 +1,33 @@
-<h2>Todo</h2>
-<hr>
+<h2>Nuovo in/out</h2>
 <div class="row">
     <div class="col-md-12">
-        <h4>New todo</h4>
+        <repeat group="{{ @categoria1 }}" value="{{ @item }}">
+            <a class="btn btn-primary btn-block btn-lg" href="{{@BASE}}{{ 'nuovo_2' | alias }}/{{ @item.id }}">{{ @item.descrizione }}</a>
+        </repeat>
+    </div>
+</div>
+<hr>
+<h2>Todo</h2>
+<div class="row">
+    <div class="col-md-12">
+        <h4>Nuovo todo</h4>
         <form method="POST" action="{{@BASE}}{{ 'todo_add' | alias }}" class="mb-4">
             <div class="form-row align-items-center">
                 <div class="col-sm-8 my-1">
                     <input type="text" class="form-control" id="todo" placeholder="Todo ..." name="todo">
                 </div>
                 <div class="col-sm-4 my-1">
-                    <button type="submit" class="btn btn-primary btn-block">Save</button>
+                    <button type="submit" class="btn btn-primary btn-block">Registra</button>
                 </div>
             </div>
         </form>
-        <h4>List todo</h4>
+        <h4>Lista todo</h4>
         <table class="table table-striped">
             <tbody>
                 <repeat group="{{ @todos }}" value="{{ @todo }}">
                     <tr>
                         <td>{{ @todo.todo }}</td>
                         <th scope="row" class="tabella-btn"><a href="todo/delete/{{ @todo.id }}" class="btn btn-danger btn-sm">X</a></th>
-                    </tr>
-                </repeat>
-            </tbody>
-        </table>
-        <h4>Categorie</h4>
-        <table class="table table-striped">
-            <tbody>
-                <repeat group="{{ @categoria4 }}" value="{{ @cat }}">
-                    <tr>
-                        <td>{{ @cat.descrizione }}</td>
                     </tr>
                 </repeat>
             </tbody>
