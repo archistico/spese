@@ -21,6 +21,8 @@ $f3->route('GET @nuovo_3: /nuovo/@cat1/@cat2', '\App\Inout->Nuovo_3');
 $f3->route('GET @nuovo_4: /nuovo/@cat1/@cat2/@cat3', '\App\Inout->Nuovo_4');
 $f3->route('GET @nuovo_5: /nuovo/@cat1/@cat2/@cat3/@cat4', '\App\Inout->Nuovo_5');
 $f3->route('POST @nuovo_salva: /nuovo/salva', '\App\Inout->Nuovo_Salva');
+$f3->route('GET @delete_confirm: /inout/delete/@id', '\App\Inout->DeleteConfirm');
+$f3->route('POST @delete: /inout/delete/@id', '\App\Inout->Delete');
 
 // Auth
 $f3->route('GET @login: /login', '\App\Auth->Login');

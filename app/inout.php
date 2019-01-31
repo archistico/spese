@@ -122,4 +122,22 @@ class Inout extends Controller
         $f3->reroute('/');
     }
 
+    public function DeleteConfirm($f3, $params)
+    {
+        $f3->set('id', $params['id']);
+        
+        $f3->set('title', 'Cancella');
+        $f3->set('container', 'inout/delete.htm');
+        echo \Template::instance()->render('templates/base.htm');
+    }
+
+    public function Delete($f3, $params)
+    {
+        $id = $f3->get('POST.id');
+        $mov = new \App\Models\Movimenti($this->db);
+        $mov->delete($id);
+
+        $f3->reroute('/');
+    }
+
 }
