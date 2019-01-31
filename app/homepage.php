@@ -53,6 +53,22 @@ class Homepage extends Controller
             }
         );
 
+        $sql = 'SELECT SUM(importo) AS somma';
+        $sql .= ' FROM movimenti';
+        $sql .= ' WHERE cat1 = 2';
+        $risultato = $this->db->exec($sql);
+        $totentrate = $risultato[0]['somma'];
+        $sql = 'SELECT SUM(importo) AS somma';
+        $sql .= ' FROM movimenti';
+        $sql .= ' WHERE cat1 = 1';
+        $risultato = $this->db->exec($sql);
+        $totuscite = $risultato[0]['somma'];
+        $differenza = $totentrate + $totuscite;
+
+        $f3->set('totentrate', $totentrate);
+        $f3->set('totuscite', $totuscite);
+        $f3->set('differenza', $differenza);
+
         $f3->set('title', 'Homepage');
         $f3->set('container', 'homepage.htm');
         echo \Template::instance()->render('templates/base.htm');
