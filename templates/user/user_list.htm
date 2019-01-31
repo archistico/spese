@@ -1,0 +1,39 @@
+<div class="row">
+    <div class="col-md-12">
+        <a href="{{@BASE}}{{ 'user_new' | alias }}" class="btn btn-primary btn-block btn-lg">NEW USER</a><br>
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-12">
+        <h3>LIST</h3>
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th scope="col">Username</th>
+                    <th scope="col" style="width: 50px">#</th>
+                </tr>
+            </thead>
+            <tbody>
+                <repeat group="{{ @list_users }}" value="{{ @item }}">
+                    <tr>
+                        <td>{{ @item.user_id }}</td>
+                        <th scope="row">
+                            <a href="{{@BASE}}/user/delete/{{ @item.user_id }}" class="btn btn-danger btn-sm">X</a>
+                        </th>
+                    </tr>
+                </repeat>
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-md-12">
+        <!-- bootstrap style-->
+        <F3:repeat group="{{ \App\Flash::instance()->getMessages() }}" value="{{ @msg }}">
+            <div class="alert alert-{{ @msg.status }} alert-dismissable">
+                {{ @msg.text | esc }}
+            </div>
+        </F3:repeat>
+    </div>
+</div>
