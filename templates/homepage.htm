@@ -1,16 +1,33 @@
-<h2>Nuovo in/out</h2>
 <div class="row">
     <div class="col-md-12">
+        <h3>Nuovo in/out</h3>
         <repeat group="{{ @categoria1 }}" value="{{ @item }}">
             <a class="btn btn-primary btn-block btn-lg" href="{{@BASE}}{{ 'nuovo_2', 'cat1='.@item.id | alias }}">{{ @item.descrizione }}</a>
         </repeat>
     </div>
 </div>
+<div class="row mt-2">
+    <div class="col-md-12">
+        <h3>Lista ultimi 10 movimenti</h3>
+        <table class="table table-striped">
+            <tbody>
+                <repeat group="{{ @ultimi10 }}" value="{{ @movimento }}">
+                    <tr>
+                        <td>{{ @convertiData(@movimento.giorno) }}</td>
+                        <td>{{ @euro(@movimento.importo) }}</td>
+                        <td>{{ @unisci(@movimento.cat1, @movimento.cat2, @movimento.cat3, @movimento.cat4) }}</td>
+                        <td>{{ @movimento.note }}</td>
+                        <th scope="row" class="tabella-btn"><a href="inout/delete/{{ @movimento.id }}" class="btn btn-danger btn-sm">X</a></th>
+                    </tr>
+                </repeat>
+            </tbody>
+        </table>
+    </div>
+</div>
 <hr>
-<h2>Todo</h2>
 <div class="row">
     <div class="col-md-12">
-        <h4>Nuovo todo</h4>
+        <h3>Nuovo todo</h3>
         <form method="POST" action="{{@BASE}}{{ 'todo_add' | alias }}" class="mb-4">
             <div class="form-row align-items-center">
                 <div class="col-sm-8 my-1">
@@ -21,7 +38,7 @@
                 </div>
             </div>
         </form>
-        <h4>Lista todo</h4>
+        <h3>Lista todo</h3>
         <table class="table table-striped">
             <tbody>
                 <repeat group="{{ @todos }}" value="{{ @todo }}">
