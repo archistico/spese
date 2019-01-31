@@ -8,3 +8,243 @@ CREATE TABLE todos (
  todo TEXT NOT NULL,
  priority INTEGER NOT NULL
 );
+
+CREATE TABLE categoria1 (
+    id INTEGER PRIMARY KEY, 
+    descrizione TEXT NOT NULL
+);
+
+CREATE TABLE categoria2 (
+    id INTEGER PRIMARY KEY, 
+    descrizione TEXT NOT NULL, 
+    madre INTEGER REFERENCES categoria1(id) ON UPDATE CASCADE
+);
+
+CREATE TABLE categoria3 (
+    id INTEGER PRIMARY KEY, 
+    descrizione TEXT NOT NULL, 
+    madre INTEGER REFERENCES categoria2(id) ON UPDATE CASCADE
+);
+
+CREATE TABLE categoria4 (
+    id INTEGER PRIMARY KEY, 
+    descrizione TEXT NOT NULL, 
+    madre INTEGER REFERENCES categoria3(id) ON UPDATE CASCADE
+);
+
+CREATE TABLE movimenti (
+    id INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT, 
+    giorno INTEGER NOT NULL, 
+    importo NUMERIC NOT NULL, 
+    note TEXT, 
+    cat1 INTEGER NOT NULL, 
+    cat2 INTEGER NOT NULL, 
+    cat3 INTEGER NOT NULL, 
+    cat4 INTEGER NOT NULL
+);
+
+INSERT INTO categoria1 VALUES(1,'Uscita');
+INSERT INTO categoria1 VALUES(2,'Entrata');
+
+INSERT INTO categoria2 VALUES(1,'Personale',1);
+INSERT INTO categoria2 VALUES(2,'Lavoro',1);
+INSERT INTO categoria2 VALUES(3,'Famiglia',1);
+INSERT INTO categoria2 VALUES(4,'Amici',1);
+INSERT INTO categoria2 VALUES(5,'Animali',1);
+INSERT INTO categoria2 VALUES(6,'Lavoro',2);
+INSERT INTO categoria2 VALUES(7,'Hobby',2);
+INSERT INTO categoria2 VALUES(8,'Famiglia',2);
+INSERT INTO categoria2 VALUES(9,'Amici',2);
+INSERT INTO categoria2 VALUES(10,'Banca',2);
+
+INSERT INTO categoria3 VALUES(1,'Abitare',1);
+INSERT INTO categoria3 VALUES(2,'Trasporto',1);
+INSERT INTO categoria3 VALUES(3,'Crescita',1);
+INSERT INTO categoria3 VALUES(4,'Salute',1);
+INSERT INTO categoria3 VALUES(5,'Alimentazione',1);
+INSERT INTO categoria3 VALUES(6,'Divertimento',1);
+INSERT INTO categoria3 VALUES(7,'Tasse',1);
+INSERT INTO categoria3 VALUES(8,'Spese fisse',1);
+INSERT INTO categoria3 VALUES(9,'Banca',1);
+INSERT INTO categoria3 VALUES(10,'Cura dell''aspetto',1);
+INSERT INTO categoria3 VALUES(11,'Strumentazione',1);
+INSERT INTO categoria3 VALUES(12,'Abitare',2);
+INSERT INTO categoria3 VALUES(13,'Trasporto',2);
+INSERT INTO categoria3 VALUES(14,'Crescita',2);
+INSERT INTO categoria3 VALUES(15,'Tasse',2);
+INSERT INTO categoria3 VALUES(16,'Spese fisse',2);
+INSERT INTO categoria3 VALUES(17,'Banca',2);
+INSERT INTO categoria3 VALUES(18,'Strumentazione',2);
+INSERT INTO categoria3 VALUES(19,'Prestiti',3);
+INSERT INTO categoria3 VALUES(20,'Regali',3);
+INSERT INTO categoria3 VALUES(22,'Prestiti',4);
+INSERT INTO categoria3 VALUES(23,'Regali',4);
+INSERT INTO categoria3 VALUES(25,'Alimentazione',5);
+INSERT INTO categoria3 VALUES(26,'Salute',5);
+INSERT INTO categoria3 VALUES(27,'Programmazione',6);
+INSERT INTO categoria3 VALUES(28,'Grafica',6);
+INSERT INTO categoria3 VALUES(29,'Architettura',6);
+INSERT INTO categoria3 VALUES(30,'Web',6);
+INSERT INTO categoria3 VALUES(31,'Generico',7);
+INSERT INTO categoria3 VALUES(32,'Regali',8);
+INSERT INTO categoria3 VALUES(33,'Restituzioni',8);
+INSERT INTO categoria3 VALUES(35,'Regali',9);
+INSERT INTO categoria3 VALUES(36,'Restituzioni',9);
+INSERT INTO categoria3 VALUES(38,'Reclami',10);
+INSERT INTO categoria3 VALUES(39,'Investimenti',10);
+INSERT INTO categoria3 VALUES(40,'Comunicare',1);
+INSERT INTO categoria3 VALUES(41,'Comunicare',2);
+INSERT INTO categoria3 VALUES(42,'Consulenze',2);
+INSERT INTO categoria3 VALUES(43,'Accessori',5);
+INSERT INTO categoria3 VALUES(44,'Dipendente',6);
+
+INSERT INTO categoria4 VALUES(1,'Mobili',1);
+INSERT INTO categoria4 VALUES(2,'Cucina',1);
+INSERT INTO categoria4 VALUES(3,'Bagno',1);
+INSERT INTO categoria4 VALUES(4,'Acqua',1);
+INSERT INTO categoria4 VALUES(5,'Elettricità',1);
+INSERT INTO categoria4 VALUES(6,'Gas',1);
+INSERT INTO categoria4 VALUES(7,'Affitto',1);
+INSERT INTO categoria4 VALUES(8,'Albergo',1);
+INSERT INTO categoria4 VALUES(9,'Casalinghi',1);
+INSERT INTO categoria4 VALUES(10,'Elettrodomestici',1);
+INSERT INTO categoria4 VALUES(11,'Spese condominiali',1);
+INSERT INTO categoria4 VALUES(12,'Giardino',1);
+INSERT INTO categoria4 VALUES(13,'Manutenzione',1);
+INSERT INTO categoria4 VALUES(14,'Soggiorno',1);
+INSERT INTO categoria4 VALUES(15,'Camera',1);
+INSERT INTO categoria4 VALUES(16,'Opere d''arte',1);
+INSERT INTO categoria4 VALUES(17,'Auto acquisto',2);
+INSERT INTO categoria4 VALUES(18,'Auto rata',2);
+INSERT INTO categoria4 VALUES(19,'Auto meccanico',2);
+INSERT INTO categoria4 VALUES(20,'Auto carburante',2);
+INSERT INTO categoria4 VALUES(21,'Moto acquisto',2);
+INSERT INTO categoria4 VALUES(22,'Moto rata',2);
+INSERT INTO categoria4 VALUES(23,'Moto meccanico',2);
+INSERT INTO categoria4 VALUES(24,'Moto carburante',2);
+INSERT INTO categoria4 VALUES(25,'Auto accessori',2);
+INSERT INTO categoria4 VALUES(26,'Moto accessori',2);
+INSERT INTO categoria4 VALUES(27,'Lavaggio',2);
+INSERT INTO categoria4 VALUES(28,'Treno',2);
+INSERT INTO categoria4 VALUES(29,'Nave',2);
+INSERT INTO categoria4 VALUES(30,'Aereo',2);
+INSERT INTO categoria4 VALUES(31,'Bus',2);
+INSERT INTO categoria4 VALUES(32,'Taxi',2);
+INSERT INTO categoria4 VALUES(33,'Bicicletta',2);
+INSERT INTO categoria4 VALUES(34,'Car sharing',2);
+INSERT INTO categoria4 VALUES(35,'Pedaggio',2);
+INSERT INTO categoria4 VALUES(36,'Libri',3);
+INSERT INTO categoria4 VALUES(37,'Cinema',3);
+INSERT INTO categoria4 VALUES(38,'Film',3);
+INSERT INTO categoria4 VALUES(39,'Abbonamenti',3);
+INSERT INTO categoria4 VALUES(40,'Corsi',3);
+INSERT INTO categoria4 VALUES(41,'Concerti',3);
+INSERT INTO categoria4 VALUES(42,'Dottore',4);
+INSERT INTO categoria4 VALUES(43,'Farmaci',4);
+INSERT INTO categoria4 VALUES(44,'Ospedale',4);
+INSERT INTO categoria4 VALUES(45,'Specialista',4);
+INSERT INTO categoria4 VALUES(46,'Palestra',4);
+INSERT INTO categoria4 VALUES(47,'Attrezzatura',4);
+INSERT INTO categoria4 VALUES(48,'Cibo e bevande',5);
+INSERT INTO categoria4 VALUES(49,'Ristorante',5);
+INSERT INTO categoria4 VALUES(50,'Bar',5);
+INSERT INTO categoria4 VALUES(51,'Vacanze',6);
+INSERT INTO categoria4 VALUES(52,'Altro',6);
+INSERT INTO categoria4 VALUES(53,'Bolli',7);
+INSERT INTO categoria4 VALUES(54,'IRPEF',7);
+INSERT INTO categoria4 VALUES(55,'IMU',7);
+INSERT INTO categoria4 VALUES(56,'Altro',7);
+INSERT INTO categoria4 VALUES(57,'IVA',7);
+INSERT INTO categoria4 VALUES(58,'Pensione',8);
+INSERT INTO categoria4 VALUES(59,'Auto assicurazione',2);
+INSERT INTO categoria4 VALUES(60,'Moto assicurazione',2);
+INSERT INTO categoria4 VALUES(61,'Altro',8);
+INSERT INTO categoria4 VALUES(62,'Telefono',8);
+INSERT INTO categoria4 VALUES(63,'Cellulare',8);
+INSERT INTO categoria4 VALUES(64,'Commissioni',9);
+INSERT INTO categoria4 VALUES(65,'Conto rata',9);
+INSERT INTO categoria4 VALUES(66,'Altro',9);
+INSERT INTO categoria4 VALUES(67,'Investimenti',9);
+INSERT INTO categoria4 VALUES(68,'Criptovalute',9);
+INSERT INTO categoria4 VALUES(69,'Polizze',9);
+INSERT INTO categoria4 VALUES(70,'Altro',1);
+INSERT INTO categoria4 VALUES(71,'Telefono',40);
+INSERT INTO categoria4 VALUES(72,'Cellulare',40);
+INSERT INTO categoria4 VALUES(73,'Internet',40);
+INSERT INTO categoria4 VALUES(74,'Corriere',40);
+INSERT INTO categoria4 VALUES(75,'Poste',40);
+INSERT INTO categoria4 VALUES(76,'Telefono',41);
+INSERT INTO categoria4 VALUES(77,'Cellulare',41);
+INSERT INTO categoria4 VALUES(78,'Internet',41);
+INSERT INTO categoria4 VALUES(79,'Corriere',41);
+INSERT INTO categoria4 VALUES(80,'Poste',41);
+INSERT INTO categoria4 VALUES(81,'Altro',40);
+INSERT INTO categoria4 VALUES(82,'Altro',41);
+INSERT INTO categoria4 VALUES(83,'Abbigliamento estivo',10);
+INSERT INTO categoria4 VALUES(84,'Abbigliamento invernale',10);
+INSERT INTO categoria4 VALUES(85,'Scarpe',10);
+INSERT INTO categoria4 VALUES(86,'Capelli',10);
+INSERT INTO categoria4 VALUES(87,'Trucchi',10);
+INSERT INTO categoria4 VALUES(88,'Accessori',10);
+INSERT INTO categoria4 VALUES(89,'Sport',10);
+INSERT INTO categoria4 VALUES(90,'Pc fisso',11);
+INSERT INTO categoria4 VALUES(91,'Portatile',11);
+INSERT INTO categoria4 VALUES(92,'Altro',11);
+INSERT INTO categoria4 VALUES(93,'Software',11);
+INSERT INTO categoria4 VALUES(94,'Commercialista',42);
+INSERT INTO categoria4 VALUES(95,'Affitto',12);
+INSERT INTO categoria4 VALUES(96,'Acquisto',1);
+INSERT INTO categoria4 VALUES(97,'Acquisto',12);
+INSERT INTO categoria4 VALUES(98,'Elettricità',12);
+INSERT INTO categoria4 VALUES(99,'Gas',12);
+INSERT INTO categoria4 VALUES(100,'Acqua',12);
+INSERT INTO categoria4 VALUES(101,'Mobili',12);
+INSERT INTO categoria4 VALUES(102,'Altro',12);
+INSERT INTO categoria4 VALUES(103,'Spese condominiali',1);
+INSERT INTO categoria4 VALUES(104,'Spese condominiali',1);
+INSERT INTO categoria4 VALUES(105,'Generale',38);
+INSERT INTO categoria4 VALUES(106,'Generale',39);
+INSERT INTO categoria4 VALUES(107,'Altro',19);
+INSERT INTO categoria4 VALUES(108,'Mamma',19);
+INSERT INTO categoria4 VALUES(109,'Papà',19);
+INSERT INTO categoria4 VALUES(110,'Fratelli',19);
+INSERT INTO categoria4 VALUES(111,'Generico',20);
+INSERT INTO categoria4 VALUES(116,'Generico',22);
+INSERT INTO categoria4 VALUES(117,'Generico',23);
+INSERT INTO categoria4 VALUES(119,'Generico',25);
+INSERT INTO categoria4 VALUES(120,'Farmaci',26);
+INSERT INTO categoria4 VALUES(121,'Veterinario',26);
+INSERT INTO categoria4 VALUES(122,'Generico',43);
+INSERT INTO categoria4 VALUES(123,'Generico',27);
+INSERT INTO categoria4 VALUES(124,'Casa Editrice',28);
+INSERT INTO categoria4 VALUES(125,'Generico',28);
+INSERT INTO categoria4 VALUES(126,'Generico',29);
+INSERT INTO categoria4 VALUES(127,'Generico',30);
+INSERT INTO categoria4 VALUES(128,'Generico',31);
+INSERT INTO categoria4 VALUES(129,'Cedolino',44);
+INSERT INTO categoria4 VALUES(130,'Altro',44);
+INSERT INTO categoria4 VALUES(131,'Viaggi',13);
+INSERT INTO categoria4 VALUES(132,'Altro',13);
+INSERT INTO categoria4 VALUES(133,'Carburante',13);
+INSERT INTO categoria4 VALUES(134,'Pedaggio',13);
+INSERT INTO categoria4 VALUES(135,'Manuali',14);
+INSERT INTO categoria4 VALUES(136,'Libri',14);
+INSERT INTO categoria4 VALUES(137,'Corsi',14);
+INSERT INTO categoria4 VALUES(138,'Altro',14);
+INSERT INTO categoria4 VALUES(139,'Generico',15);
+INSERT INTO categoria4 VALUES(140,'Iscrizione Ordine',16);
+INSERT INTO categoria4 VALUES(141,'Assicurazione',16);
+INSERT INTO categoria4 VALUES(142,'Altro',16);
+INSERT INTO categoria4 VALUES(143,'Generico',17);
+INSERT INTO categoria4 VALUES(144,'Hardware',18);
+INSERT INTO categoria4 VALUES(145,'Software',18);
+INSERT INTO categoria4 VALUES(146,'Generico',32);
+INSERT INTO categoria4 VALUES(147,'Mamma',33);
+INSERT INTO categoria4 VALUES(148,'Papà',33);
+INSERT INTO categoria4 VALUES(149,'Fratelli',33);
+INSERT INTO categoria4 VALUES(150,'Altro',33);
+INSERT INTO categoria4 VALUES(151,'Generico',35);
+INSERT INTO categoria4 VALUES(152,'Generico',36);
+INSERT INTO categoria4 VALUES(153,'Sostituto',42);
+INSERT INTO categoria4 VALUES(154,'Spese condominiali',12);
+

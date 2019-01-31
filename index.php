@@ -15,6 +15,9 @@ $f3->route('GET @home: /', '\App\Homepage->Show');
 $f3->route('GET @todo_delete: /todo/delete/@id', '\App\Todo->Delete');
 $f3->route('POST @todo_add: /todo/add', '\App\Todo->Add');
 
+// Spese
+
+
 // Auth
 
 $f3->route('GET @login: /login', '\App\Auth->Login');
