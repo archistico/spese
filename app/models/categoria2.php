@@ -20,6 +20,11 @@ class Categoria2 extends \DB\SQL\Mapper
         return $this->query;
     }
 
+    public function getByMadre($id) {
+        $this->load(array('madre=?',$id));
+        return $this->query;
+    }
+
     public function add() {
         $this->copyFrom('POST');
         $this->save();

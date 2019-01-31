@@ -1,0 +1,8 @@
+<div class="row">
+    <div class="col-md-12">
+        <h3><strong>{{ @categoria1[0]['descrizione'] }} / {{ @categoria2[0]['descrizione'] }}</strong></h3>
+        <repeat group="{{ @categoria3 }}" value="{{ @item }}">
+            <a class="btn btn-primary btn-block btn-lg" href="{{@BASE}}{{ 'nuovo_4', 'cat1='.@categoria1[0]['id'].',cat2='.@categoria2[0]['id'].',cat3='.@item.id | alias }}">{{ @item.descrizione }}</a>
+        </repeat>
+    </div>
+</div>

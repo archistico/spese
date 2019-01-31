@@ -17,14 +17,14 @@ $f3->route('POST @todo_add: /todo/add', '\App\Todo->Add');
 
 // Spese
 $f3->route('GET @nuovo_2: /nuovo/@cat1', '\App\Inout->Nuovo_2');
+$f3->route('GET @nuovo_3: /nuovo/@cat1/@cat2', '\App\Inout->Nuovo_3');
+$f3->route('GET @nuovo_4: /nuovo/@cat1/@cat2/@cat3', '\App\Inout->Nuovo_4');
+$f3->route('GET @nuovo_5: /nuovo/@cat1/@cat2/@cat3/@cat4', '\App\Inout->Nuovo_5');
 
 // Auth
-
 $f3->route('GET @login: /login', '\App\Auth->Login');
 $f3->route('POST @loginCheck: /loginCheck', '\App\Auth->LoginCheck');
-
 $f3->route('GET @logout: /logout', '\App\Auth->Logout');
-
 $f3->route('GET @user: /user', '\App\Admin->User_list');
 $f3->route('GET @user_new: /user/new', '\App\Admin->User_new');
 $f3->route('GET @user_delete: /user/delete/@user_id', '\App\Admin->User_delete');
