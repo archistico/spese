@@ -16,7 +16,7 @@ $f3->route('GET @todo_delete: /todo/delete/@id', '\App\Todo->Delete');
 $f3->route('POST @todo_add: /todo/add', '\App\Todo->Add');
 
 // Spese
-$f3->route('GET @nuovo_2: /nuovo/@num', '\App\Movimento->Nuovo_2');
+$f3->route('GET @nuovo_2: /nuovo/@cat1', '\App\Inout->Nuovo_2');
 
 // Auth
 

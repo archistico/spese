@@ -10,8 +10,8 @@ class Inout extends Controller
 
     public function Nuovo_2($f3, $params)
     {
-        $cat1 = $params['num'];
-        
+        $cat1 = $params['cat1'];
+
         $categoria2 = new \App\Models\Categoria2($this->db);
         $f3->set('categoria2', $categoria2->all());
 

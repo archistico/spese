@@ -2,7 +2,7 @@
 <div class="row">
     <div class="col-md-12">
         <repeat group="{{ @categoria1 }}" value="{{ @item }}">
-            <a class="btn btn-primary btn-block btn-lg" href="{{@BASE}}{{ 'nuovo_2' | alias }}/{{ @item.id }}">{{ @item.descrizione }}</a>
+            <a class="btn btn-primary btn-block btn-lg" href="{{@BASE}}{{ 'nuovo_2', 'cat1='.@item.id | alias }}">{{ @item.descrizione }}</a>
         </repeat>
     </div>
 </div>
