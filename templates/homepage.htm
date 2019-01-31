@@ -24,5 +24,15 @@
                 </repeat>
             </tbody>
         </table>
+        <h4>Categorie</h4>
+        <table class="table table-striped">
+            <tbody>
+                <repeat group="{{ @categoria4 }}" value="{{ @cat }}">
+                    <tr>
+                        <td>{{ @cat.descrizione }}</td>
+                    </tr>
+                </repeat>
+            </tbody>
+        </table>
     </div>
 </div>
