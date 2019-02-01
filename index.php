@@ -24,6 +24,7 @@ $f3->route('POST @nuovo_salva: /nuovo/salva', '\App\Inout->Nuovo_Salva');
 $f3->route('GET @delete_confirm: /inout/delete/@id', '\App\Inout->DeleteConfirm');
 $f3->route('POST @delete: /inout/delete/@id', '\App\Inout->Delete');
 $f3->route('GET @lista: /inout/lista', '\App\Inout->Lista');
+$f3->route('GET @statistiche: /inout/statistiche', '\App\Inout->Statistiche');
 
 // Auth
 $f3->route('GET @login: /login', '\App\Auth->Login');

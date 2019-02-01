@@ -184,4 +184,55 @@ class Inout extends Controller
         echo \Template::instance()->render('templates/base.htm');
     }
 
+    public function Statistiche($f3, $params)
+    {
+        $sql_categorie1 = "SELECT id, descrizione FROM categoria1";
+        $categorie1 = $this->db->exec($sql_categorie1);
+
+        $sql_categorie2_uscite = "SELECT id, descrizione FROM categoria2 WHERE madre = 1";
+        $categorie2_uscite = $this->db->exec($sql_categorie2_uscite);
+
+        $sql_categorie2_entrate = "SELECT id, descrizione FROM categoria2 WHERE madre = 2";
+        $categorie2_entrate = $this->db->exec($sql_categorie2_entrate);
+
+        // CAT2 - USCITE
+        $lista2_uscite = [];
+        foreach($categorie2_uscite as $uscita) {
+            $id_uscita = $uscita['id'];
+            $descrizione_uscita = $uscita['descrizione'];
+
+            $sql = "SELECT SUM(importo) AS somma FROM movimenti WHERE cat1 = 1 AND cat2 = ".$id_uscita;
+            $res = $this->db->exec($sql);
+
+            $lista2_uscite[] = ['descrizione' => $descrizione_uscita, 'somma'=> $res[0]['somma']];
+        }
+        $f3->set('lista2_uscite', $lista2_uscite);
+
+        // CAT2 - ENTRATE
+        $lista2_entrate = [];
+        foreach($categorie2_entrate as $entrata) {
+            $id_entrata = $entrata['id'];
+            $descrizione_entrata = $entrata['descrizione'];
+
+            $sql = "SELECT SUM(importo) AS somma FROM movimenti WHERE cat1 = 2 AND cat2 = ".$id_entrata;
+            $res = $this->db->exec($sql);
+
+            $lista2_entrate[] = ['descrizione' => $descrizione_entrata, 'somma'=> $res[0]['somma']];
+        }
+        $f3->set('lista2_entrate', $lista2_entrate);
+
+        $f3->set('euro', function ($i) {
+            if ($i >= 0) {
+                return "+" . number_format((float) $i, 2, '.', '') . " €";
+            } else {
+                return number_format((float) $i, 2, '.', '') . " €";
+            }
+        }
+        );        
+
+        $f3->set('title', 'Statistiche');
+        $f3->set('container', 'inout/statistiche.htm');
+        echo \Template::instance()->render('templates/base.htm');
+    }
+
 }

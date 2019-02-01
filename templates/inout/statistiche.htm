@@ -1,0 +1,38 @@
+<div class="row mt-3">
+    <div class="col-md-12">
+        <h3>Macro categorie - Uscite</h3>
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-12">
+        <table class="table table-striped">
+            <tbody>
+                <repeat group="{{ @lista2_uscite }}" value="{{ @cat }}">
+                    <tr>
+                        <td>{{ @cat.descrizione }}</td>
+                        <td>{{ @euro(@cat.somma) }}</td>
+                    </tr>
+                </repeat>
+            </tbody>
+        </table>
+    </div>
+</div>
+<div class="row mt-3">
+    <div class="col-md-12">
+        <h3>Macro categorie - Entrate</h3>
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-12">
+        <table class="table table-striped">
+            <tbody>
+                <repeat group="{{ @lista2_entrate }}" value="{{ @cat }}">
+                    <tr>
+                        <td>{{ @cat.descrizione }}</td>
+                        <td>{{ @euro(@cat.somma) }}</td>
+                    </tr>
+                </repeat>
+            </tbody>
+        </table>
+    </div>
+</div>
