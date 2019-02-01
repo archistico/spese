@@ -6,6 +6,11 @@
       </a>
     </li>
     <li class="nav-item">
+      <a class="nav-link <check if=" {{ @title=='Lista' }} "><true>active</true></check>" href="{{@BASE}}{{ 'lista' | alias }}">
+        Lista
+      </a>
+    </li>
+    <li class="nav-item">
       <a class="nav-link <check if=" {{ @title=='User' }} "><true>active</true></check>" href="{{@BASE}}{{ 'user' | alias }}">
         User
       </a>
@@ -14,6 +19,6 @@
       <a class="nav-link <check if=" {{ @title=='Logout' }} "><true>active</true></check>" href="{{@BASE}}{{ 'logout' | alias }}">
         Logout
       </a>
-</li>
+    </li>
   </ul>
 </div>

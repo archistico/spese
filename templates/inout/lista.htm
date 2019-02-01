@@ -1,0 +1,23 @@
+<div class="row mt-3">
+    <div class="col-md-12">
+        <h3>Lista movimenti</h3>
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-12">
+        <table class="table table-striped">
+            <tbody>
+                <repeat group="{{ @movimenti }}" value="{{ @movimento }}">
+                    <tr>
+                        <td>{{ @convertiData(@movimento.giorno) }}</td>
+                        <td>{{ @euro(@movimento.importo) }}</td>
+                        <td>{{ @unisci(@movimento.cat1, @movimento.cat2, @movimento.cat3, @movimento.cat4) }}</td>
+                        <td>{{ @movimento.note }}</td>
+                        <th scope="row" class="tabella-btn"><a href="{{@BASE}}{{ 'delete', 'id='.@movimento.id | alias }}" class="btn btn-danger btn-sm">X</a></th>
+                    </tr>
+                </repeat>
+            </tbody>
+        </table>
+    </div>
+</div>
+
