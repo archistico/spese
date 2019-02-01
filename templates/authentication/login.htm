@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en">
+<html lang="it-IT">
 
 <head>
     <meta charset="utf-8">
@@ -22,7 +22,7 @@
 </head>
 
 <body>
-    <div class="row">
+    <div class="row p-3">
         <div class="col-md-4"></div>
 
         <div class="col-md-4">
@@ -38,8 +38,7 @@
                 </div>
                 <input type="hidden" name="token" value="{{ @token }}">
                 <input type="hidden" name="password">
-                <input type="button" class="btn btn-primary btn-block btn-lg" value="Login" onclick="formhash(this.form, this.form.password);"
-                />
+                <input type="button" class="btn btn-primary btn-block btn-lg" value="Login" onclick="formhash(this.form, this.form.pass);" />
             </form>
         </div>
 
@@ -58,8 +57,8 @@
         </div>
         <div class="col-md-4"></div>
     </div>
-
-    <script src="{{@BASE}}/js/sha512.js"></script>
+    
+    <script src="{{@BASE}}/js/hashes.min.js"></script>
     <script>
         function formhash(form, password) {
             // Crea un elemento di input che verrà usato come campo di output per la password criptata.
@@ -68,10 +67,13 @@
             form.appendChild(p);
             p.name = "p";
             p.type = "hidden"
-            p.value = hex_sha512(password.value);
+
+            var SHA512 = new Hashes.SHA512;
+            p.value = SHA512.hex(password.value);
             // Assicurati che la password non venga inviata in chiaro.
             password.value = "";
             // Come ultimo passaggio, esegui il 'submit' del form.
+
             form.submit();
         }
     </script>
